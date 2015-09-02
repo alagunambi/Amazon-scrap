@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Aasin
 ================
 
@@ -46,3 +47,7 @@ Credits
 
 License
 -------
+=======
+# Amazon-scrap
+Product Scrapping from Amazon
+>>>>>>> 0d3bcc23df07e610eedcfa2c331fc3ac1af427de
