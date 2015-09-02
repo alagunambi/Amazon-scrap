@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  price: MyString
+  model: MyText
+  asin: MyString
+  mrp: MyString
+  sale: MyString
+  link: MyText
+  source: MyText
+
+two:
+  name: MyString
+  price: MyString
+  model: MyText
+  asin: MyString
+  mrp: MyString
+  sale: MyString
+  link: MyText
+  source: MyText

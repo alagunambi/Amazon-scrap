@@ -1,0 +1,12 @@
+<br>
+
+Enter Search URL of Amazon.com
+<br>
+<br>
+<%= simple_form_for("amazon", html: { class: 'form-horizontal' }) do |f| %>
+<div class="input-group">
+  <input class="string url required form-control" placeholder="Paste link here." name="amazon[url]" id="amazon_url" type="url">
+  <span class="input-group-btn">
+    <%= f.button :submit, "Search in Amazon.com", :class => "btn btn-success" %>
+  </span>
+<% end %>
