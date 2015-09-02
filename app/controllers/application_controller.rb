@@ -14,7 +14,8 @@ class ApplicationController < ActionController::Base
       # logger.info "New IP is #{agent.ip}------------------------------------------------===================================================="
       end
 
-      agent.user_agent_alias = "Mac Safari 4"
+      agent.user_agent_alias = Product.random_desktop_user_agent
+
       #page = agent.get('http://www.amazon.in/s/ref=nb_sb_noss_1/278-0803572-2415314?url=search-alias%3Daps&field-keywords=royal+canin')
       #page = agent.get('http://www.amazon.in/s/ref=nb_sb_noss_2/277-7862435-2981953?url=search-alias%3Daps&field-keywords=bajaj&rh=i%3Aaps%2Ck%3Abajaj')
 
