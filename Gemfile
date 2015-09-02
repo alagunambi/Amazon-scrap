@@ -8,15 +8,19 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
+
 gem 'bootstrap-sass'
 gem 'high_voltage'
 gem 'simple_form'
 gem 'therubyracer', :platform=>:ruby
+
+gem 'tor-privoxy'
 gem 'mechanize'
 
 group :development do

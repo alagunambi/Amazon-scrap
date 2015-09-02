@@ -14,8 +14,9 @@
           <th>Name</th>
           <th>Price</th>
           <th>Model</th>
-          <th>Asin</th>
-          <th>Mrp</th>
+          <th>ASIN</th>
+          <th>MRP</th>
+          <th>Sale</th>
           <th>Link</th>
           <th>Source</th>
           <!--
@@ -32,6 +33,7 @@
             <td><%= product.model %></td>
             <td><%= product.asin %></td>
             <td><%= product.mrp %></td>
+            <td><%= product.sale %></td>
             <td><%= product.link %></td>
             <td><%= Base64.strict_decode64(product.source) %></td>
             <!--
