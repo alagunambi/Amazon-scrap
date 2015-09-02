@@ -4,7 +4,11 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    if params[:key]
+      @products = Product.where(:source => params[:key]).all
+    else
+      @products = Product.all
+    end
     respond_to do |format|
       format.html
       format.csv { render text: @products.as_csv }

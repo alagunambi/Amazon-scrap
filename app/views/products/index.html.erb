@@ -2,7 +2,7 @@
 
 <h1>
   <%= "Gathered Products (" + @products.count.to_s + ")" %>
-  <%= link_to "Download as CSV", "/products.csv", :class => "pull-right btn btn-success white", :id => "download-button" %>
+  <%= link_to "Download as CSV", "/products.csv?key=#{@products.last.source}", :class => "pull-right btn btn-success white", :id => "download-button" %>
 </h1>
 
 
@@ -33,7 +33,7 @@
             <td><%= product.asin %></td>
             <td><%= product.mrp %></td>
             <td><%= product.link %></td>
-            <td><%= product.source %></td>
+            <td><%= Base64.strict_decode64(product.source) %></td>
             <!--
             <td>
               <%= link_to 'Show', product %> |

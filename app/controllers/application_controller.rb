@@ -10,10 +10,13 @@ class ApplicationController < ActionController::Base
       #page = agent.get('http://www.amazon.in/s/ref=nb_sb_noss_2/277-7862435-2981953?url=search-alias%3Daps&field-keywords=bajaj&rh=i%3Aaps%2Ck%3Abajaj')
 
       hostname = URI.parse(url).host
+      key = Base64.strict_encode64(url)
 
       if hostname.match("amazon.com")
-        
+
       else
+        Product.where(:source => key).destroy_all
+
         page = agent.get(url)
 
         iterate_products(page.search("li.s-result-item"), url)
@@ -33,11 +36,12 @@ class ApplicationController < ActionController::Base
       puts e
     end
 
-    Product.where(:source => url)
+    Product.where(:source => key)
   end
 end
 
 def iterate_products(products_list, url)
+  key = Base64.strict_encode64(url)
   products_list.each_with_index do |item, i|
     product = Product.new
     #puts "Product No: #{i} ##################################"
@@ -53,7 +57,7 @@ def iterate_products(products_list, url)
     #puts item.attr("data-asin")
     product.mrp = item.search("span.a-text-strike").text
     #puts item.search("span.a-text-strike").text
-    product.source = url
+    product.source = key
     product.save!
   end
 end
