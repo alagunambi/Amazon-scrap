@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
       agent = TorPrivoxy::Agent.new '127.0.0.1', '', {8118 => 9051} do |agent|
         sleep 1
       #  logger.debug "New IP is #{agent.ip}------------------------------------------------===================================================="
-      #  logger.info "New IP is #{agent.ip}------------------------------------------------===================================================="
+      # logger.info "New IP is #{agent.ip}------------------------------------------------===================================================="
       end
 
       agent.user_agent_alias = "Mac Safari 4"
@@ -76,7 +76,7 @@ def iterate_products(agent, products_list, url)
       #puts item.search("span.a-text-strike").text
       product.source = key
       product.save!
-    rescue e
+    rescue => e
       puts e
       puts e.backtrace
     end
