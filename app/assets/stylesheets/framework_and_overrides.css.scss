@@ -48,3 +48,15 @@ section {
   @extend .row;
   margin-top: 20px;
   }
+
+.welcome-image.first-image {
+    width: 230px
+  }
+
+.welcome-image {
+  width: 200px;
+}
+
+a img.welcome-image:hover {
+  border-bottom: 5px solid #337AB7;
+}
