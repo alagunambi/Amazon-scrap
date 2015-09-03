@@ -1,10 +1,12 @@
 class Product < ActiveRecord::Base
 
   def self.as_csv
-    CSV.generate do |csv|
-      csv << ['name', 'link', 'asin', 'model', 'sale', 'mrp', 'price', 'source' ]
+    col_names = 'name,asin,price,mrp,sale,model,link,source'
+    col_names = col_names.split(",") if  col_names.is_a?(String)
+    CSV.generate(:col_sep => ";") do |csv|
+      csv << col_names
       all.each do |item|
-        csv << item.attributes.values_at(*column_names)
+        csv << col_names.collect{|name| item.send(name).squish()}
       end
     end
   end
