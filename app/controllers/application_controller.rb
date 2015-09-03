@@ -65,7 +65,10 @@ def iterate_products(agent, products_list, url)
 
       #puts item.search("a.s-access-detail-page").attr("href")
       product.name = product_page.search("#productTitle").text
-      #puts item.search("h2").text
+      if product.name.empty?
+        product.name = product_page.search("#btAsinTitle").text
+      end
+            #puts item.search("h2").text
       product.price = product_page.search("#priceblock_ourprice").text
       #puts item.search("span.s-price").text
       product.model = product_page.search("#feature-bullets").search("li").text
