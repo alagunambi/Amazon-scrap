@@ -22,25 +22,21 @@ class ApplicationController < ActionController::Base
       hostname = URI.parse(url).host
       key = Base64.strict_encode64(url)
 
-      if hostname.match("amazon.com")
+      Product.where(:source => key).destroy_all
 
-      else
-        Product.where(:source => key).destroy_all
+      page = agent.get(url)
+    #  logger.info "New IP is #{agent.ip}------------------------------------------------===================================================="
 
-        page = agent.get(url)
-      #  logger.info "New IP is #{agent.ip}------------------------------------------------===================================================="
+      iterate_products(agent, page.search("li.s-result-item"), url)
+
+      loop do
+        if link = page.link_with(:dom_id => "pagnNextLink") # As long as there is still a nextpage link...
+          page = link.click
+        else # If no link left, then break out of loop
+          break
+        end
 
         iterate_products(agent, page.search("li.s-result-item"), url)
-
-        loop do
-          if link = page.link_with(:dom_id => "pagnNextLink") # As long as there is still a nextpage link...
-            page = link.click
-          else # If no link left, then break out of loop
-            break
-          end
-
-          iterate_products(agent, page.search("li.s-result-item"), url)
-        end
       end
     rescue => e
       puts "Pochu da..."
