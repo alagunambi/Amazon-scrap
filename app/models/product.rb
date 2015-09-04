@@ -3,7 +3,7 @@ class Product < ActiveRecord::Base
   def self.as_csv
     col_names = 'name,asin,price,mrp,sale,model,link,source'
     col_names = col_names.split(",") if  col_names.is_a?(String)
-    CSV.generate(:col_sep => ";") do |csv|
+    CSV.generate(:col_sep => ",") do |csv|
       csv << col_names
       all.each do |item|
         csv << col_names.collect{|name| item.send(name).squish()}
