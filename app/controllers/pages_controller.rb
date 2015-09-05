@@ -15,7 +15,7 @@ class PagesController < ApplicationController
         format.html { redirect_to "/products?key=#{key}", notice: 'Products were successfully gathered.' }
         format.json { render :show, status: :created, location: @product }
       else
-        format.html { redirect_to :back, notice: 'Failed to gather information.' }
+        format.html { redirect_to "/", notice: 'Failed to gather information.' }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
