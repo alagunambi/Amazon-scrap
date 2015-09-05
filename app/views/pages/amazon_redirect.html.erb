@@ -1,0 +1,9 @@
+<center>
+  <h1> Please click start. </h1>
+
+  <%= link_to "Start", { :controller => "pages", :action => "amazon", :amazon => @params }, :class => "btn btn-danger btn-lg white" %>
+  <h4>
+    After few minutes, you can
+    <%= link_to "Visit gathered products", "/products?key=" + @key, :target => "_blank"%>
+  </h4>
+</center>

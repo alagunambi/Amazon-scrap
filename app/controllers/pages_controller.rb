@@ -1,5 +1,12 @@
 class PagesController < ApplicationController
 
+  def amazon_redirect
+    @key = Base64.strict_encode64(params[:amazon][:url])
+    @params = params[:amazon]
+
+    #redirect_to :controller => "pages", :action => "amazon", :amazon => params[:amazon]
+  end
+
   def amazon
     @products = from_amazon(params[:amazon][:url])
     key = Base64.strict_encode64(params[:amazon][:url])
