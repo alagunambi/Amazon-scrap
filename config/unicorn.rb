@@ -7,7 +7,7 @@ working_directory '/home/udp/Amazon-scrap'
 # http://unicorn.bogomips.org/Unicorn/Configurator.html
 preload_app true
 
-timeout 30
+timeout 300000
 
 # This is where we specify the socket.
 # We will point the upstream Nginx module to this socket later on
